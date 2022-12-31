@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[cjk]{kotex} % [cjk] option is needed for texlive 2022 engine (see more: https://www.overleaf.com/blog/tex-live-2022-now-available)
+
+\usepackage{mathrsfs}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{calligra}
+\usepackage{mathtools}
+\usepackage{mathabx} % Needed to use \widecheck
+\usepackage{quiver}
+
+% \usepackage{fullpage}
+\usepackage{enumitem}
+\setlist[enumerate]{label=(\alph*)}
+\usepackage{tcolorbox}
+
+\usepackage{makecell}
+\usepackage{hhline}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{svg}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=orange,
+}
+\usepackage{ulem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parskip}{\baselineskip}
+
+\newcommand{\separater}{\begin{center} \rule{0.5\linewidth}{0.3pt} \end{center}}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}} % Circled numbering, https://tex.stackexchange.com/a/7045
+
+% \renewcommand{\thesubsection}{\arabic{subsection}} % Subsection numbering
+
+%%%%%%% Theorem Definition Style %%%%%%%
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{thmdef}[lem]{Theorem-Definition}
+\newtheorem{cor}[lem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{exam}[lem]{Examples}
+\newtheorem*{exer}{Exercise}
+\newtheorem*{prob}{Problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\sl}{\mathfrak{sl}}
+
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\bdry}{\partial}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\CP}{\mathbb{C}\mathrm{P}}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\eval}{eval}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\calHom}{\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\PGr}{\mathbf{Gr}}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\PSh}{\underline{\textsf{PSh}}}
+\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\RP}{\mathbb{R}\mathrm{P}}
+\DeclareMathOperator{\Sh}{\underline{\textsf{Sh}}}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Tors}{Tors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\textbf{Algebraic Geometry Study}\\[0.5em] {\large Solution of Exercises}}
+\author{20190262 Jeongwoo Park}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
