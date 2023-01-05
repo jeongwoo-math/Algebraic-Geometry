@@ -83,6 +83,7 @@
 \DeclareMathOperator{\Pic}{Pic}
 \DeclareMathOperator{\PSh}{\underline{\textsf{PSh}}}
 \DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\rk}{rank}
 \DeclareMathOperator{\Sch}{\underline{\textsf{Sch}}}
 \DeclareMathOperator{\RP}{\mathbb{R}\mathrm{P}}
@@ -168,9 +169,80 @@
     By combining these two results, the global section functor $\Sh \to \Ab$ is left-exact. \qed
 \end{tcolorbox}
 
+\begin{tcolorbox}[breakable, enhanced]
+    \textbf{The global section functor is not exact}. Let's consider an exact sequence of sheaves
+    % https://q.uiver.app/?q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFx1bmRlcmxpbmV7XFxtYXRoYmJ7Wn19Il0sWzIsMCwiXFxtYXRoc2Nye0h9Il0sWzMsMCwiXFxtYXRoc2Nye0h9XlxcYXN0Il0sWzQsMCwiMCJdLFswLDFdLFsxLDIsIjIgXFxwaSBpIl0sWzIsMywiXFxleHAiXSxbMyw0XV0=
+    \[\begin{tikzcd}
+        0 & {\underline{\mathbb{Z}}} & {\mathscr{H}} & {\mathscr{H}^\ast} & 0.
+        \arrow[from=1-1, to=1-2]
+        \arrow["{2 \pi i}", from=1-2, to=1-3]
+        \arrow["\exp", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    in $\Sh(\mathbb{C}^\times)$. (Here, $\mathscr{H}$ is the sheaf of holomorphic functions, and $\mathscr{H}^\ast$ is one of invertiable holomorphic functions.) Indeed, the sequence is exact on each contractible open sets (and contractible open sets in $\mathbb{C}^\times$ forms a basis of topology).
+    
+    If we take global section functor at the sequence, then we have a sequence
+    % https://q.uiver.app/?q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxtYXRoYmJ7Wn0iXSxbMiwwLCJcXG1hdGhzY3J7SH0oXFxtYXRoYmJ7Q31eXFx0aW1lcykiXSxbMywwLCJcXG1hdGhzY3J7SH1eXFxhc3QoXFxtYXRoYmJ7Q31eXFx0aW1lcykiXSxbNCwwLCIwIl0sWzAsMV0sWzEsMiwiMiBcXHBpIGkiXSxbMiwzLCJcXGV4cCJdLFszLDRdXQ==
+    \[\begin{tikzcd}
+        0 & {\mathbb{Z}} & {\mathscr{H}(\mathbb{C}^\times)} & {\mathscr{H}^\ast(\mathbb{C}^\times)} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["{2 \pi i}", from=1-2, to=1-3]
+        \arrow["\exp", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    However, the exponential map is not surjective. Indeed, the fiber of $z \in \mathscr{H}^\ast(\mathbb{C}^\times)$ is empty, because there is no logorithm function defined on $\mathbb{C}^\times$. \qed
+
+    \textbf{Note}. The first cohomology of $\underline{\mathbb{Z}} \in \Sh(\mathbb{C}^\times)$ is the same with the singular cohomology $H^1(\mathbb{C}^\times ; \mathbb{Z}) = \mathbb{Z}$.
+\end{tcolorbox}
+
 \separater
 
-[[Exercise II.1.16 solution]]
+\begin{exer}[II.1.16, Flasque sheaves]
+    A sheaf $\mathscr{F}$ on a topological space $X$ is \emph{flasque} or \emph{flabby} if for every inclusion $V \subseteq U$ of open sets, the restriction map $\mathscr{F}(U) \to \mathscr{F}(V)$ is surjective.
+    \begin{enumerate}
+        \item Show that a constant sheaf on an irreducible topological space is flasque.
+        \item If $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}'' \to 0$ is an exact sequence of sheaves, and if $\mathscr{F}'$ is flasque, then for any open set $U$, the sequence $0 \to \mathscr{F}'(U) \to \mathscr{F}(U) \to \mathscr{F}''(U) \to 0$ of abelian groups is alse exact, i.e, the global section functor is exact for those sequences.
+        \item If $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}'' \to 0$ is an exact sequence of sheaves, and if $\mathscr{F}'$ and $\mathscr{F}$ are flasque, then $\mathscr{F}''$ is flasque.
+        \item If $f:X \to Y$ is a continuous map, and if $\mathscr{F}$ is a flasque sheaf on $X$, then $f_\ast \mathscr{F}$ is a flasque sheaf on $Y$.
+        \item Let $\mathscr{F}$ be any sheaf on $X$. We define a new sheaf $\mathscr{G}$, called the sheaf of \emph{disconntinuous sections} of $\mathscr{F}$ as follows. For each open set $U \subseteq X$, $\mathscr{G}(U) := \prod_{x \in U} \mathscr{F}_x$. Show that $\mathscr{G}$ is a flasque sheaf, and that there is a natural injective morphism of $\mathscr{F}$ to $\mathscr{G}$.
+    \end{enumerate}
+\end{exer}
+
+\begin{tcolorbox}[breakable, enhanced]
+    \textbf{Solution}.
+    \begin{enumerate}
+        \item This is because $\underline{A}(U) = A$ whenever $U$ is non-empty, and the restriction map is the identity map except for the empty-set case. \qed
+        
+        \item It is enough to show that the global section functor is exact. Let $f \in \mathscr{F}''$ be any element. Note that the sequence at each stalk is exact. It is enough to show that if there are sections $g_i \in \Gamma(U_i, \mathscr{F})$ which map to $f|_{U_i}$ ($i = 1,2$), then there is a section (a sort of of ``gluing'') $g \in \Gamma(U_1 \cup U_2, \mathscr{F})$ which maps to $f$. \qed
+        
+        Since $g_1 - g_2$ is in the kernel of $\psi_{U_{12}}$, by the left-exactness of the global section functor, $g_1 - g_2$ is an image of some section $h \in \Gamma(U_{12}, \mathscr{F}')$. Since $\mathscr{F}'$ is flabby, it can be extended to $U_2$.
+
+        Now, $g_1$ and $g_2 - \varphi(h)$ coincides on the intersection $U_{12}$, so there is a gluing $g \in \Gamma(U_1 \cup U_2, \mathscr{F})$ of them. Now, $g$ maps to $f$ because $g_1$ and $g_2$ maps to $f$, and $\varphi(h)$ maps to $0$.
+
+        \item Let's see next commutative diagram.
+        
+        % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXG1hdGhzY3J7Rn0nKFUpIl0sWzEsMCwiXFxtYXRoc2Nye0Z9KFUpIl0sWzIsMCwiXFxtYXRoc2Nye0Z9JycoVSkiXSxbMCwxLCJcXG1hdGhzY3J7Rn0nKFYpIl0sWzEsMSwiXFxtYXRoc2Nye0Z9KFYpIl0sWzIsMSwiXFxtYXRoc2Nye0Z9JycoVikiXSxbMCwxXSxbMSwyLCJcXHBzaV9VIl0sWzAsM10sWzEsNCwiXFxyZXMiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMiw1LCJcXHJlcycnIl0sWzMsNF0sWzQsNSwiXFxwc2lfViIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dXQ==
+        \[\begin{tikzcd}
+            {\mathscr{F}'(U)} & {\mathscr{F}(U)} & {\mathscr{F}''(U)} \\
+            {\mathscr{F}'(V)} & {\mathscr{F}(V)} & {\mathscr{F}''(V)}
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\psi_U}", from=1-2, to=1-3]
+            \arrow[from=1-1, to=2-1]
+            \arrow["\res", two heads, from=1-2, to=2-2]
+            \arrow["{\res''}", from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-2]
+            \arrow["{\psi_V}", two heads, from=2-2, to=2-3]
+        \end{tikzcd}\]
+
+        Since $\mathscr{F}'$ is flabby, the map $\psi_V$ is surjective. Also, $\mathscr{F}$ is flabby implies the surjectivity of $\res$ by definition. Hence, the composition of these two maps is surjective. This means, $\res'' \circ \psi_U = \psi_V \circ \res$ is surjective, so $\res''$ must be surjective. \qed
+
+        \item Clear because the restriction maps of the pushout is the restriction maps of the original sheaf. \qed
+        
+        \item \fbox{1}\, $\mathscr{G}$ is flabby: This is because the projection map $\prod_{x \in U} \mathscr{F}_x \to \prod_{x \in V} \mathscr{F}_x$ is surjective for any inclusion $V \subseteq U$ of open sets.
+        
+        \fbox{2}\, There is a natural injective map $\mathscr{F} \to \mathscr{G}$: Define $\varphi: \mathscr{F} \to \mathscr{G}$ as $\varphi_U: s \mapsto [x \mapsto s_x]$. This map is clearly injetive because $s \in \ker \varphi_U$ implies $s_x = 0$ for all $x \in U$, which implies $s = 0$ by the sheaf axiom. \qed
+    \end{enumerate}
+\end{tcolorbox}
 
 \newpage
 
